@@ -1,0 +1,12 @@
+# Визначення змінних
+obj-m += hello.o
+
+KDIR ?= /lib/modules/`uname -r`/build
+
+# Правила збирання модуля
+all:
+	$(MAKE) -C $(KDIR) M=$(PWD) modules
+
+clean:
+	$(MAKE) -C $(KDIR) M=$(PWD) clean
+
